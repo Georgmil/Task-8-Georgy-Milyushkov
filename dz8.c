@@ -42,47 +42,11 @@ void task1(){
 
 }
 
-void qs(int massiv2[], int start, int end, int *pere, int *sravn){
-
-
-	
-	int piv, i, j, zam;
-	piv = end;
-	i = start-1;
-	j = start;
-	
-	if (start < end) {
-
-
-		for (int j = start; j < end; j++) {
-			*sravn += 1;
-			if (massiv2[j] < massiv2[piv]) {
-				i++;
-				if (i != j) {
-					*pere += 1;
-					zam = i;
-					i = j;
-					j = zam;
-				}
-			}
-		}
-		if (i + 1 != end) {
-			*pere += 1;
-			zam = massiv2[i + 1];
-			massiv2[i + 1] = massiv2[end];
-			massiv2[end] = zam;
-		}
-		//i+1
-		qs(massiv2, start, i,&*pere,&*sravn);
-		qs(massiv2, i + 2,end, &*pere,&*sravn);
-	}
-
-
-
-}
 
 
 void task2(){
+	void qs(int massiv2[], int start, int end, int* pere, int* sravn);
+
 	int len2,star,pere,sravn;
 	int massiv2[maxsize];
 
@@ -113,8 +77,6 @@ void task2(){
 
 
 
-
-
 int main() {
 	int n = 1;
 	while (n) {
@@ -131,4 +93,44 @@ int main() {
 
 
 	return 0;
+}
+
+
+void qs(int massiv2[], int start, int end, int* pere, int* sravn) {
+
+
+
+	int piv, i, j, zam;
+	piv = end;
+	i = start - 1;
+	j = start;
+
+	if (start < end) {
+
+
+		for (int j = start; j < end; j++) {
+			*sravn += 1;
+			if (massiv2[j] < massiv2[piv]) {
+				i++;
+				if (i != j) {
+					*pere += 1;
+					zam = i;
+					i = j;
+					j = zam;
+				}
+			}
+		}
+		if (i + 1 != end) {
+			*pere += 1;
+			zam = massiv2[i + 1];
+			massiv2[i + 1] = massiv2[end];
+			massiv2[end] = zam;
+		}
+		//i+1
+		qs(massiv2, start, i, &*pere, &*sravn);
+		qs(massiv2, i + 2, end, &*pere, &*sravn);
+	}
+
+
+
 }
