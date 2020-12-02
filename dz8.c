@@ -100,13 +100,13 @@ void qs(int massiv2[], int start, int end, int* pere, int* sravn) {
 
 
 
-	int piv, i, j, zam;
-	piv = end;
-	i = start - 1;
-	j = start;
+
 
 	if (start < end) {
-
+		int piv, i, j, zam;
+		piv = end;
+		i = start - 1;
+		j = start;
 
 		for (int j = start; j < end; j++) {
 			*sravn += 1;
@@ -120,6 +120,7 @@ void qs(int massiv2[], int start, int end, int* pere, int* sravn) {
 				}
 			}
 		}
+
 		if (i + 1 != end) {
 			*pere += 1;
 			zam = massiv2[i + 1];
